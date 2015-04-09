@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="tom">
+
+    <head>
+        <title>My App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- build:css css/style.css -->
+        <link href="css/main.css" rel="stylesheet"> 
+        <!-- endbuild -->
+    </head>
+    
+    <body>
+        
+        <header class="main-header">
+            <div class="f-col profile-info">
+                <img class="profile-image" src="https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/10899014_328832477310383_1487786474_n.jpg">
+                <span class="profile-name">Chee.S</span>
+            </div>
+            <div class="f-col progress">
+                <div class="completed">1/8 tasks completed</div>
+                <div class="bar"><span style="width:15%"></span></div>
+                <div class="time-left">1D:14H:30M left</div>
+            </div>
+        </header>
+        
+        <div ui-view></div>
+        
+        <div class="bg"></div>
+        
+        <!-- build:js js/app.js -->
+        <script src="bower_components/jQuery/dist/jquery.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="app/modules/tasks/dist/module-tasks.min.js"></script>
+        <script src="app/modules/photos/dist/module-photos.min.js"></script>
+
+        <script src="app/app.js"></script>
+        <!-- endbuild -->
+
+        <script>
+            $(function(){
+                
+                $('.tasks-list .task').click(function(e){
+                    var $el = $(this);
+                    var offset = $el.offset();
+                    var $view = $('<div class="view task-1"></div>');
+                    
+                    $view.data('record', offset);
+                    
+                    $view.css({
+                        top:offset.top,
+                        left:offset.left
+                    })
+                    
+                    $('body').append($view)
+                    setTimeout(function(){
+                        $('body').addClass('hide-scroll');
+                        $view
+                            .addClass('active')
+                            .css('top', $('body').scrollTop());
+                    },300);
+                    
+                    
+                    $view.click(function(){
+                        var record = $view.data().record;
+                        $view
+                            .removeClass('active')
+                            .css('top', record.top);
+                        $('body').removeClass('hide-scroll');
+                        setTimeout(function(){
+                            $view.remove();
+                        },300);
+                        //$view.remove();
+                    });
+                    
+                });
+                
+                
+
+            });
+        </script>
+        
+    </body>
+
+</html>

@@ -1,0 +1,90 @@
+//initial payload - user without local storage
+{
+    ref_rep_id:'guid',
+    task_id:'guid',
+    task_name:'Coca cola challeges',
+    brand_info:{
+        logo:'url'
+    },
+    user:{},
+    tasks:[
+        {
+            type:0, //sharing tools
+            id:'guid',
+            name:'sharing this out',
+            is_completed:false
+            
+        },
+        {
+            type:1,
+            id:'guid',
+            name:'Take the polls',
+            is_completed:false
+        },
+        {
+            type:2,
+            id:'guid',
+            name:'Upload your selfies',
+            is_completed:false
+        }
+    ]
+}
+
+
+//initial payload - user without local storage
+{
+    ref_rep_id:'guid',
+    task_id:'guid',
+    task_name:'Coca cola challeges',
+    brand_info:{
+        logo:'url'
+    },
+    user:{
+        name:'sim',
+        email:'sim@sim.com',
+    },
+    tasks_completed:1,
+    tasks:[
+        {
+            type:0, //sharing tools
+            id:'guid',
+            name:'share this out',
+            is_completed:false
+            
+        },
+        {
+            type:1,
+            id:'guid',
+            name:'Take the polls',
+            is_completed:true
+        },
+        {
+            type:2,
+            id:'guid',
+            name:'Upload your selfies',
+            is_completed:false
+        }
+    ]
+}
+
+
+//get task detail - passin task_id
+{
+    id:'guid',
+    name:'Take the polls',
+    is_completed:true,
+    questions:[
+        {
+            id:'guid',
+            type:0, //opend ended
+            text:'Do you like the new coke color?',
+            is_required:false,
+            answers:''
+        }
+    ]
+}
+
+
+/*            networks:['facebook','twitter','instagram'],
+            share_url:'url'
+*/
